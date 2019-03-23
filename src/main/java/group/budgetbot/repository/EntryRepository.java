@@ -1,12 +1,12 @@
 package group.budgetbot.repository;
 
-import group.budgetbot.model.Answer;
+import group.budgetbot.model.Entry;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface AnswerRepository extends JpaRepository<Answer, Long> {
-    List<Answer> findByQuestionId(Long questionId);
+public interface EntryRepository extends JpaRepository<Entry, Long> {
+    List<Entry> findByUserId(Long userId);
 }

@@ -9,25 +9,27 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "answers")
-public class Answer extends AuditModel {
+@Table(name = "entries")
+public class Entry extends AuditModel {
     @Id
-    @GeneratedValue(generator = "answer_generator")
+    @GeneratedValue(generator = "entry_generator")
     @SequenceGenerator(
-            name = "answer_generator",
-            sequenceName = "answer_sequence",
+            name = "entry_generator",
+            sequenceName = "entry_sequence",
             initialValue = 1000
     )
-    private Long id;
+    private Long entryId;
 
-    @Column(columnDefinition = "text")
-    private String text;
+    private String label;
+    private Float value;
+
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "question_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    // what does this mean?
     @JsonIgnore
-    private Question question;
+    private User user;
 
     // Getters and Setters (Omitted for brevity) - with lombok
 
